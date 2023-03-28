@@ -34,8 +34,9 @@ function handleStack(stackId: number, sample: ISample, sourceData: IJsSelfProfil
     // frameId是当前stack中frame的下标；parentId是父亲的stack的下标
     const {frameId, parentId} = sourceData.stacks[stackId]
     const frame = sourceData.frames[frameId]; // 当前frame
-    const {resourceId} = frame
-    const resource = resourceId ? sourceData.resources[resourceId] : ""; // 当前地址
+    let {resourceId} = frame
+    resourceId = resourceId ?? -1
+    const resource = resourceId >= 0 ? sourceData.resources[resourceId] : ""; // 当前地址
 
     const recordData: IFrameRecordData = {
         ...frame,
