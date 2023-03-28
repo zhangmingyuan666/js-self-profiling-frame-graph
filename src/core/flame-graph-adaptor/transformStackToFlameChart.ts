@@ -87,15 +87,16 @@ function handleChildrenOfEachLevel(i: number, n: number, samples: ISample[], dat
                 //         debugger
                 //     }
 
-                if (samples[i].stack![currentStackIndex].name === "processResult") {
-                    console.log('currentSample', currentSample);
-                    console.log('samples[i]', samples[i]);
-                    console.log(samples[i] === currentSample);
-                    //debugger
-                }
+                // if (samples[i].stack![currentStackIndex].name === "processResult") {
+                //     console.log('currentSample', currentSample);
+                //     console.log('samples[i]', samples[i]);
+                //     console.log(samples[i] === currentSample);
+                //     //debugger
+                // }
 
-                const obj: IFlameGraphData = {
+                const obj = {
                     name: samples[i].stack![currentStackIndex].name,
+                    type: samples[i].stack![currentStackIndex].name,
                     start: startTime,
                     duration: diffTime,
                     children: []
@@ -124,6 +125,8 @@ function handleChildrenOfEachLevel(i: number, n: number, samples: ISample[], dat
 
                 const obj = {
                     name: samples[i].stack![currentStackIndex].name,
+                    info: samples[i].stack![currentStackIndex],
+                    type: samples[i].stack![currentStackIndex].name,
                     start: startTime,
                     duration: diffTime,
                     children: []
