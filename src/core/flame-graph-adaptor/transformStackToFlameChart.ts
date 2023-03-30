@@ -69,7 +69,6 @@ function handleChildrenOfEachLevel(i: number, n: number, samples: ISample[], dat
             continue;
         }
 
-        const currentStackName = currentStack[currentStackIndex].name
         for (let j = i; j < n; j++) {
             // 当前闭区间样本
             const currentTargetSample = samples[j];
@@ -81,18 +80,6 @@ function handleChildrenOfEachLevel(i: number, n: number, samples: ISample[], dat
                 const {timestamp: endTime} = allSamples[samples[j - 1].index! + 1]
                 const diffTime = endTime - startTime
                 data.children = data.children || []
-
-                // if(startTime === 
-                //     996.465){
-                //         debugger
-                //     }
-
-                // if (samples[i].stack![currentStackIndex].name === "processResult") {
-                //     console.log('currentSample', currentSample);
-                //     console.log('samples[i]', samples[i]);
-                //     console.log(samples[i] === currentSample);
-                //     //debugger
-                // }
 
                 const obj = {
                     name: samples[i].stack![currentStackIndex].name,
@@ -110,9 +97,7 @@ function handleChildrenOfEachLevel(i: number, n: number, samples: ISample[], dat
                 }
                 currentSample = samples[i] || {}
                 currentStack = currentSample.stack || []
-
                 j = i
-
                 continue
             }
 
@@ -132,16 +117,6 @@ function handleChildrenOfEachLevel(i: number, n: number, samples: ISample[], dat
                     children: []
                 }
                 data.children.push(obj)
-
-                // if(startTime === 
-                //     996.465){
-                //         debugger
-                //     }
-                // console.log('parent', data.children.length);
-                // console.log('层数', currentStackIndex);
-                // console.log('到了最后一个需要记录----', currentStackName);
-                // console.log('---------------⬆️');
-
                 handleChildrenOfEachLevel(i, j + 1, samples, obj, currentStackIndex + 1, allSamples)
                 i = j;
                 continue;
