@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {Button} from 'antd'
+import {Button, message} from 'antd'
 import React, {useRef, useState} from 'react';
 import {samplesFactory} from '../../utils/samples';
 
@@ -38,10 +38,15 @@ const Header: React.FC<IHeader> = ({setList, list}) => {
         function handleFiles(files: any) {
             for (const file of files) {
                 // 在这里处理文件内容
+                const {name, type} = file
+                if (type !== "application/json") {
+                    message.error("Please upload data in json-self-profiling format")
+                    continue
+                }
                 const reader = new FileReader();
                 reader.onload = () => {
                     const data = JSON.parse(reader.result as string);
-                    const sample = samplesFactory(file.name, data)
+                    const sample = samplesFactory(name, data)
                     setList((prev: any) => {
                         return [...prev, sample]
                     })
