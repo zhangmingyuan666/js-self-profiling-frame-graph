@@ -7,6 +7,14 @@ A frame chart which display js-self-profiling json data
 ![img](https://img.shields.io/badge/npm-6.14.11-green.svg)
 ![img](https://img.shields.io/badge/node-14.16.0-green.svg)
 
+# 效果概览
+
+<a href="https://js-self-profiling-frame-graph.vercel.app/" target="_blank">查看预览效果(vercel)</a>
+
+您可以上传您的js-self-profiling json数据到如上vercel站点中
+
+<img src="https://cdn.nlark.com/yuque/0/2023/png/27170584/1688204507914-11928073-8d46-4fad-be02-e1a5cbe0a685.png?x-oss-process=image%2Fresize%2Cw_2024%2Climit_0" />
+
 # 如何使用
 
 1. `npm i`
