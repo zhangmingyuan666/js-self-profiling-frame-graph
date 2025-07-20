@@ -5,13 +5,16 @@ import styled from 'styled-components'
 import {useEffect, useState} from 'react';
 import EditorTest from './test-data/editorTest.json'
 import PauseFunc from './test-data/pauseFunc.json'
+import EditFoo from './test-data/edit-foo.json'
+import EditTwo from './test-data/edit-two.json'
+import EditThree from './test-data/edit-three.json'
 import {initJSONSamples} from './utils/samples';
 function App() {
   const [JSONSamples, setJSONSamples] = useState([])
   const [currentIndex, setCurrentIndex] = useState(0)
 
   useEffect(() => {
-    const ans: any = initJSONSamples([PauseFunc, EditorTest])
+    const ans: any = initJSONSamples([PauseFunc, EditorTest, EditFoo, EditTwo, EditThree])
     setJSONSamples(ans)
   }, [])
 
